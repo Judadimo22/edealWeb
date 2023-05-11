@@ -7,8 +7,7 @@ import UsersPage from './pages/UsersPage/UsersPage';
 function App() {
   return(
     <Routes>
-      <Route exact path='/' element={<HomePage/>}/>
-      <Route exact path='/users' element={<UsersPage/>}/>
+      <Route exact path='/' element={<UsersPage/>}/>
     </Routes>
   );
 }

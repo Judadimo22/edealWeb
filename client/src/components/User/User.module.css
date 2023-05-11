@@ -1,0 +1,11 @@
+.containerUser{
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+    margin: 0 3.125rem;
+    flex-wrap: wrap;
+}
+
+.containerUser p{
+    text-align: left;
+}
