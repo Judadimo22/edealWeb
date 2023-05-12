@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import style from './User.module.css'
+import { Link } from "react-router-dom";
 
 
 const User = (props) => {
@@ -14,7 +15,8 @@ const User = (props) => {
  
 
   return (
-    <div className={style.containerUser}>
+    <Link style={{ textDecoration: 'none', color:'black' }} to={`details/${props.user._id}`}>
+        <div className={style.containerUser}>
       <div>
       <p className={style.email}><strong>Email:</strong> {Email}</p>
       </div>
@@ -27,10 +29,8 @@ const User = (props) => {
       <div>
       <p><strong>Teléfono:</strong> {Phone}</p>
       </div>
-      <div>
-      <p><strong>Teléfono:</strong> {Phone}</p>
-      </div>
     </div>
+    </Link>
   );
 };
 
