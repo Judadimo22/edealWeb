@@ -15,22 +15,30 @@ const User = (props) => {
  
 
   return (
+    <div>
     <Link style={{ textDecoration: 'none', color:'black' }} to={`details/${props.user._id}`}>
         <div className={style.containerUser}>
-      <div>
-      <p className={style.email}><strong>Email:</strong> {Email}</p>
-      </div>
-      <div>
-      <p><strong>Nombre:</strong> {Name}</p>
-      </div>
-      <div>
-      <p><strong>Apellido:</strong> {LastName}</p>
-      </div>
-      <div>
-      <p><strong>Teléfono:</strong> {Phone}</p>
-      </div>
+          <div>
+            <h5>Plan financiero Edeal</h5>
+          </div>
     </div>
     </Link>
+    <Link style={{ textDecoration: 'none', color:'black' }} to={`details/${props.user._id}`}>
+        <div className={style.containerUser}>
+          <div>
+            <h5>Credito</h5>
+          </div>
+    </div>
+    </Link>
+    <Link style={{ textDecoration: 'none', color:'black' }} to={`details/${props.user._id}`}>
+        <div className={style.containerUser}>
+          <div>
+            <h5>Ahorro</h5>
+          </div>
+    </div>
+    </Link>
+    </div>
+    
   );
 };
 

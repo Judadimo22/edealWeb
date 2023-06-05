@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getUserById, updateInfoPersonal } from "../../redux/actions";
 import Swal from "sweetalert2";
 
-const UpdateInfo = () => {
+const DefinirObjetivos = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -167,5 +167,4 @@ const UpdateInfo = () => {
   );
 };
 
-export default UpdateInfo;
-
+export default DefinirObjetivos;

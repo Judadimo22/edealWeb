@@ -1,6 +1,7 @@
 import { 
     GET_USERS,
-    GET_BY_ID
+    GET_BY_ID,
+    UPDATE_INFO_PERSONAL
 } from "../actions/index";
 
 const initialState = {
@@ -22,6 +23,10 @@ function rootReducer(state = initialState, action) {
             return{
                 ...state,
                 Details: action.payload
+            };
+        case UPDATE_INFO_PERSONAL:
+            return{
+                ...state
             }
         default: {
             return state;

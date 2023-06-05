@@ -33,9 +33,6 @@ const Users = () => {
   return (
     <div>
         <div>
-            <h1>Users in database</h1>
-        </div>
-        <div>
         {
           Users.length ?
              Users.slice(pageSliceStart, pageSliceEnd).map(user => (<User key={user._id} user={user} />)) : null 
