@@ -31,8 +31,8 @@ const Users = () => {
 
 
   return (
-    <div>
-        <div>
+    <div className='flex'>
+        <div className='flex justify-center mx-auto text-center'>
         {
           Users.length ?
              Users.slice(pageSliceStart, pageSliceEnd).map(user => (<User key={user._id} user={user} />)) : null 

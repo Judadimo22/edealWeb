@@ -1,14 +1,16 @@
 import { 
     GET_USERS,
     GET_BY_ID,
-    UPDATE_INFO_PERSONAL
+    UPDATE_INFO_PERSONAL,
+    REGISTER_USER
 } from "../actions/index";
 
 const initialState = {
     allUsers: [],
     Users: [],
     UsersCopy: [],
-    Details: []
+    Details: [],
+    userId: ""
 };
 
 function rootReducer(state = initialState, action) {
@@ -27,7 +29,13 @@ function rootReducer(state = initialState, action) {
         case UPDATE_INFO_PERSONAL:
             return{
                 ...state
-            }
+            };
+        case REGISTER_USER:
+        console.log('ID:', action.payload.userId);
+            return {
+                ...state,
+                userId: action.payload.userId
+            };
         default: {
             return state;
         }

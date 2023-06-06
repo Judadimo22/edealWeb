@@ -11,22 +11,23 @@ const User = (props) => {
   const Name = props.user.name;
   const LastName = props.user.lastName;
   const Phone = props.user.phone;
+  const Id = props.user.id
 
  
 
   return (
-    <div>
+    <div className="text-center">
     <Link style={{ textDecoration: 'none', color:'black' }} to={`details/${props.user._id}`}>
         <div className={style.containerUser}>
           <div>
-            <h5>Plan financiero Edeal</h5>
+            <h5>{Email}</h5>
           </div>
     </div>
     </Link>
     <Link style={{ textDecoration: 'none', color:'black' }} to={`details/${props.user._id}`}>
         <div className={style.containerUser}>
           <div>
-            <h5>Credito</h5>
+            <h5>{Id}</h5>
           </div>
     </div>
     </Link>

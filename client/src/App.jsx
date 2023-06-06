@@ -11,11 +11,19 @@ import Hogar from './components/ControlFinanzas/Gastos/Hogar';
 import Transporte from './components/ControlFinanzas/Gastos/Transporte';
 import Entretenimiento from './components/ControlFinanzas/Gastos/Entretenimiento';
 import DefinirObjetivos from './components/DefinirObjetivos/DefinirObjetivos';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import Home from './components/Home/Home';
+import Confirmar from './components/Confirmar/Confirmar';
+import DashBoard from './components/DashBoard/DashBoard';
+
 
 function App() {
   return(
     <Routes>
-      <Route exact path='/' element={<UsersPage/>}/>
+      <Route exact path='/' element={<Register/>}/>
+      <Route exact path='/register' element={<Register/>}/>
+      <Route exact path='/home' element={<Home/>}/>
       <Route exact path= '/details/:id' element={<UpdateInfo/>}/>
       <Route exact path= '/controlFinanzas/:id' element={<ControlFinanzas/>}/>
       <Route exact path= '/ahorros/:id' element={<Ahorros/>}/>
@@ -25,6 +33,8 @@ function App() {
       <Route exact path= '/gastosTransporte/:id' element={<Transporte/>}/>
       <Route exact path= '/gastosEntretenimiento/:id' element={<Entretenimiento/>}/>
       <Route exact path= '/definirObjetivos/:id' element={<DefinirObjetivos/>}/>
+      <Route exact path= '/confirmar' element={<Confirmar/>}/>
+      <Route exact path= '/dashboard' element={<DashBoard/>}/>
     </Routes>
   );
 }

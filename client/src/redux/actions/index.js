@@ -1,9 +1,36 @@
 import axios from "axios";
+import jwtDecode from 'jwt-decode';
 export const GET_USERS = 'GET_USERS';
 export const GET_BY_ID = 'GET_BY_ID';
 export const UPDATE_INFO_PERSONAL = 'UPDATE_INFO_PERSONAL';
 export const UPDATE_AHORROS = 'UPDATE_AHORROS';
-export const UPDATE_INGRESOS = 'UPDATE_INGRESOS'
+export const UPDATE_INGRESOS = 'UPDATE_INGRESOS';
+export const REGISTER_USER = 'REGISTER_USER';
+export const CONFIRMAR_CUENTA = 'CONFIRMAR_CUENTA'
+
+export function registerUser(payload) {
+  return async function (dispatch) {
+    try {
+      let response = await axios.post('http://localhost:3001/register', payload);
+      const token = response.data.token;
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken._id;
+      console.log('IDACTIONS:', userId);
+
+      dispatch({
+        type: REGISTER_USER,
+        payload: {
+          user: response.data,
+          userId: userId,
+        }
+      });
+    } catch (error) {
+      // Manejo de errores
+    }
+  }
+}
+
+
 
 export function getUsers() {
     return async function (dispatch) {
@@ -54,5 +81,20 @@ export function getUserById(id) {
         payload: json.data
       })
     }
+  }
+
+  export function confirmarCuenta(id) {
+    return async function (dispatch) {
+      try {
+        const json = await axios.put(`http://localhost:3001/confirmar/${id}`);
+        return dispatch({
+          type: CONFIRMAR_CUENTA,
+          payload: json.data
+        });
+      } catch (error) {
+        console.error(error);
+        // Aquí puedes manejar el error de alguna manera si lo deseas
+      }
+    };
   }
   

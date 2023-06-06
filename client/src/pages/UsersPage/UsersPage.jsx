@@ -5,9 +5,9 @@ import style from './UsersPage.module.css'
 
 const UsersPage = () => {
     return(
-        <div className={style.containerUsers}>
-            <div className={style.containerImage}>
-                <img className="h-[300px]" src={edeal_logo} alt="" />
+        <div >
+            <div className="flex justify-center text-center mb-[10px] mt-[10px]">
+                <img className="h-auto" src={edeal_logo} alt="" />
             </div>
             <div>
                 <Users/>
