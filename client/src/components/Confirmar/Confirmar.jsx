@@ -3,18 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { confirmarCuenta, getUserById } from "../../redux/actions";
+import { setUserId } from "../../redux/actions";
 
 const Confirmar = () => {
   const dispatch = useDispatch();
-  const userId2 = useSelector((state) => state.userId);
   const getUserId = useSelector((state) => state.Details);
   const [secondsRemaining, setSecondsRemaining] = useState(60);
   const [inputCode, setInputCode] = useState("");
   const navigate = useNavigate();
+  const [storedUserId, setStoredUserId] = useState(null);
 
   useEffect(() => {
-    dispatch(getUserById(userId2));
-  }, [dispatch, userId2]);
+    dispatch(getUserById(storedUserId));
+  }, [dispatch, storedUserId]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,6 +30,15 @@ const Confirmar = () => {
       clearInterval(timer);
     };
   }, [secondsRemaining]);
+
+  useEffect(() => {
+    // Recuperar userId del almacenamiento local al cargar el componente
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      dispatch(setUserId(storedUserId));
+      setStoredUserId(storedUserId);
+    }
+  }, [dispatch]);
 
   function handleSubmit(e) {
     e.preventDefault();

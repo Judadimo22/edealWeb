@@ -139,7 +139,7 @@ const Register = () => {
                     <div className="mt-[20px] bg-[#E8E112] w-[300px] mx-auto text-white relative left-[10px] py-[2px] rounded ">
                         <button type="submit">Registrarse</button>
                     </div>
-                    <Link to='/'>
+                    <Link to='/login'>
                     <div className="mt-[15px]">
                         <strong>
                         <p className="text-black">Ya tienes cuenta ? <span className="text-[#E8E112]">Inicia sesión</span></p>
