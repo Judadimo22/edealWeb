@@ -31,9 +31,9 @@ const MenuPlaneacion = () => {
 
   
     return (
-      <div>
+      <div className="mt-[50px]">
         <ul className="flex justify-center">
-            <div className="mx-[30px]">
+            <div className="mx-[30px] bg-[#E8E112] py-[2px] px-[5px] rounded-sm cursor-pointer">
             <li
             className={selectedMenuItem === "paso1" ? "active" : ""}
             onClick={() => handleMenuItemClick("paso1")}
@@ -42,7 +42,7 @@ const MenuPlaneacion = () => {
           </li>
             </div>
 
-          <div className="mx-[30px]">
+          <div className="mx-[30px] bg-[#E8E112] py-[2px] px-[5px] rounded-sm cursor-pointer">
             <li
             className={selectedMenuItem === "paso2" ? "active" : ""}
             onClick={() => handleMenuItemClick("paso2")}
@@ -51,7 +51,7 @@ const MenuPlaneacion = () => {
           </li>
             </div>
 
-          <div className="mx-[30px]">
+          <div className="mx-[30px] bg-[#E8E112] py-[2px] px-[5px] rounded-sm cursor-pointer">
           <li
             className={selectedMenuItem === "paso3" ? "active" : ""}
             onClick={() => handleMenuItemClick("paso3")}
@@ -60,7 +60,7 @@ const MenuPlaneacion = () => {
           </li>
           </div>
 
-          <div className="mx-[30px]">
+          <div className="mx-[30px] bg-[#E8E112] py-[2px] px-[5px] rounded-sm cursor-pointer">
           <li
             className={selectedMenuItem === "paso4" ? "active" : ""}
             onClick={() => handleMenuItemClick("paso4")}
@@ -69,7 +69,7 @@ const MenuPlaneacion = () => {
           </li>
           </div>
 
-          <div className="mx-[30px]">
+          <div className="mx-[30px] bg-[#E8E112] py-[2px] px-[5px] rounded-sm cursor-pointer">
           <li
             className={selectedMenuItem === "paso5" ? "active" : ""}
             onClick={() => handleMenuItemClick("paso5")}
@@ -85,7 +85,9 @@ const MenuPlaneacion = () => {
             <div>
                 {estadoCivilCliente1 != null ? (
                     <>
-                    <h1>Gracias por completar el formulario</h1>
+                    <div className="mt-[100px] mx-[50px]">
+                    <h1 className="text-white text-[30px]">Gracias por completar el paso 1</h1>
+                    </div>
                     </>
                 ): (
                     <InfoPersonal/>

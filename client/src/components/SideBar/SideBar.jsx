@@ -23,23 +23,25 @@ const SideBar = () => {
 
     const name = getUserId.name
     return(
-        <div>
-            <div>
+        <div className="mt-[30px] border-r-2 border-white h-full">
+            <div className="mb-[20px]">
                 <Link to='/dashboard'>
                 <img className="mx-auto" src={logo} alt="" />
                 </Link>
             </div>
-            <div className="text-white text-[20px]">Bienvenido {name}</div>
+            <div className="text-white text-[20px] mb-[100px]">Bienvenido {name}</div>
             <div>
+            <div className="my-[10px] text-white">
                 <Link to = '/planeacionFinanciera'>
                 <h1>Planeacion financiera</h1>
                 </Link>
             </div>
-            <div>
+            <div className="my-[10px] text-white">
                 Credito
             </div>
-            <div>
+            <div className="my-[10px] text-white">
                 Ahorro
+            </div>
             </div>
         </div>
     )

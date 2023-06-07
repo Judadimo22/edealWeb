@@ -22,7 +22,7 @@ const DashBoard = () => {
 
   return (
     <div className="flex mt-[20px]">
-      <div className="w-[25%]">
+      <div className="w-[25%] ">
         <SideBar/>
       </div>
       <div className="w-[75%]">
