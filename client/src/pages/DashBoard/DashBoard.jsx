@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserId } from "../../redux/actions";
+import SideBar from "../../components/SideBar/SideBar";
+import Menu from '../../components/Menu/Menu'
 
 const DashBoard = () => {
   const dispatch = useDispatch();
@@ -8,7 +10,6 @@ const DashBoard = () => {
   const getUserId = useSelector((state) => state.Details);
 
   useEffect(() => {
-    // Recuperar userId del almacenamiento local al cargar el componente
     const storedUserId = localStorage.getItem('userId');
     if (storedUserId) {
       dispatch(setUserId(storedUserId));
@@ -17,9 +18,16 @@ const DashBoard = () => {
   }, [dispatch]);
 
 
+
+
   return (
-    <div>
-      <h1>{storedUserId}</h1>
+    <div className="flex mt-[20px]">
+      <div className="w-[25%]">
+        <SideBar/>
+      </div>
+      <div className="w-[75%]">
+        <Menu/>
+      </div>
     </div>
   );
 };

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { getUserById, updateInfoPersonal } from "../../redux/actions";
+import { getUserById, updateInfoPersonal, setUserId } from "../../../../redux/actions";
 import Swal from "sweetalert2";
 
-const UpdateInfo = () => {
+const InfoPersonal = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
   const navigate = useNavigate();
+  const [storedUserId, setStoredUserId] = useState(null);
   const getUserId = useSelector((state) => state.Details);
   const [inputInfo, setInputInfo] = useState({
     estadoCivilCliente1: "",
@@ -19,8 +19,20 @@ const UpdateInfo = () => {
   });
 
   useEffect(() => {
-    dispatch(getUserById(id));
-  }, [id]);
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      dispatch(setUserId(storedUserId));
+      setStoredUserId(storedUserId);
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getUserById(storedUserId));
+  }, [dispatch, storedUserId]);
+
+  useEffect(() => {
+    dispatch(getUserById(storedUserId));
+  }, [storedUserId]);
 
   useEffect(() => {
     setInputInfo({
@@ -50,7 +62,7 @@ const UpdateInfo = () => {
       confirmButtonColor: "#3085d6",
       confirmButtonText: "Continue"
     });
-    await dispatch(updateInfoPersonal(id, inputInfo));
+    await dispatch(updateInfoPersonal(storedUserId, inputInfo));
     setInputInfo({
       estadoCivilCliente1: "",
       situacionLaboralCliente1: "",
@@ -59,7 +71,7 @@ const UpdateInfo = () => {
       relacionDependiente: "",
       fechaNacimientoDependiente: ""
     });
-    navigate(`/controlFinanzas/${id}`); 
+    window.location.reload();
   }
 
   const name = getUserId.name;
@@ -167,5 +179,4 @@ const UpdateInfo = () => {
   );
 };
 
-export default UpdateInfo;
-
+export default InfoPersonal;

@@ -32,7 +32,6 @@ const Confirmar = () => {
   }, [secondsRemaining]);
 
   useEffect(() => {
-    // Recuperar userId del almacenamiento local al cargar el componente
     const storedUserId = localStorage.getItem('userId');
     if (storedUserId) {
       dispatch(setUserId(storedUserId));
