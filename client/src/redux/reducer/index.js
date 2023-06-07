@@ -3,7 +3,8 @@ import {
     GET_BY_ID,
     UPDATE_INFO_PERSONAL,
     REGISTER_USER,
-    SET_USER_ID
+    SET_USER_ID,
+    UPDATE_INGRESOS
   } from "../actions/index";
   
   const initialState = {
@@ -31,6 +32,10 @@ import {
         return {
           ...state
         };
+      case UPDATE_INGRESOS: 
+      return {
+        ...state
+      };
       case REGISTER_USER:
         console.log('ID:', action.payload.userId);
         return {

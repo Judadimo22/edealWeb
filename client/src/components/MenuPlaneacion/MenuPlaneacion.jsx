@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getUserById, setUserId } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import InfoPersonal from "../Forms/Paso1/InfoPersonal/InfoPersonal";
+import DropdownMenu from "../Forms/Paso2/DropdownMenu";
+import ControlFinanzas from "../Forms/Paso2/ControlFinanzas";
 
 const MenuPlaneacion = () => {
     const [selectedMenuItem, setSelectedMenuItem] = useState("home");
@@ -25,6 +27,10 @@ const MenuPlaneacion = () => {
     const estadoCivilCliente1 = getUserId.estadoCivilCliente1
 
     const handleMenuItemClick = (menuItem) => {
+      setSelectedMenuItem(menuItem);
+    };
+
+    const handleMenuPaso2Click = (menuItem) => {
       setSelectedMenuItem(menuItem);
     };
 
@@ -97,7 +103,11 @@ const MenuPlaneacion = () => {
              }
             </div>
 
-          {selectedMenuItem === "paso2" && <h1>Paso 2</h1>}
+          {selectedMenuItem === "paso2" && 
+          <div>
+            <ControlFinanzas/>
+          </div>
+          }
           {selectedMenuItem === "paso3" && <h1>Paso 3</h1>}
           {selectedMenuItem === "paso4" && <h1>Paso 4</h1>}
           {selectedMenuItem === "paso5" && <h1>Paso 5</h1>}
