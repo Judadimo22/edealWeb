@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GastosHogar from "./Gastos/Hogar";
 import GastosTransporte from "./Gastos/Transporte";
+import GastosEntretenimiento from "./Gastos/Entretenimiento";
 
 const Gastos = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -14,8 +15,8 @@ const Gastos = () => {
       return <GastosHogar />;
     } else if (selectedOption === "gastosTransporte") {
       return <GastosTransporte />;
-    } else if (selectedOption === "form3") {
-      return <Form3 />;
+    } else if (selectedOption === "gastosEntretenimiento") {
+      return <GastosEntretenimiento />;
     } else {
       return null;
     }
@@ -27,7 +28,7 @@ const Gastos = () => {
         <option value="">Selecciona el formulario que deseas completar</option>
         <option value="gastosHogar">Gastos del hogar</option>
         <option value="gastosTransporte">Gastos de transporte</option>
-        <option value="form3">Formulario 3</option>
+        <option value="gastosEntretenimiento">Gastos en entretenimiento</option>
       </select>
       {renderForm()}
     </div>
@@ -36,13 +37,5 @@ const Gastos = () => {
 
 
 
-const Form3 = () => {
-  return (
-    <form>
-      <h2>Formulario 3</h2>
-      {/* Aquí puedes agregar los campos y elementos del Formulario 3 */}
-    </form>
-  );
-};
 
 export default Gastos;
