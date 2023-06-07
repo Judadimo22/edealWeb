@@ -72,7 +72,7 @@ export function updateInfoPersonal (id, payload){
   }
 }
 
-export function updateAhorrosPaso2 (id, payload){
+export function updateAhorros (id, payload){
   return async function (dispatch) {
     const json = await axios.put(`http://localhost:3001/ahorros/${id}`, payload);
     return dispatch({

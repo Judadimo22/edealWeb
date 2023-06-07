@@ -3,6 +3,7 @@ import { getUserById, setUserId } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import DropdownMenu from "./DropdownMenu";
 import Ingresos from "./Ingresos";
+import Ahorros from "./Ahorros";
 
 const ControlFinanzas = () => {
     const [selectedMenuItem, setSelectedMenuItem] = useState("home");
@@ -24,6 +25,7 @@ const ControlFinanzas = () => {
 
     const name = getUserId.name
     const salario = getUserId.salario
+    const inversiones = getUserId.inversiones
 
     const handleMenuItemClick = (menuItem) => {
       setSelectedMenuItem(menuItem);
@@ -47,12 +49,12 @@ const ControlFinanzas = () => {
           </li>
             </div>
 
-          <div className="mx-[30px]  py-[2px] px-[5px] rounded-sm cursor-pointer">
+          <div className="mx-[30px]  py-[2px] px-[5px] rounded-sm cursor-pointer text-white">
             <li
-            className={selectedMenuItem === "paso2" ? "active" : ""}
-            onClick={() => handleMenuItemClick("paso2")}
+            className={selectedMenuItem === "ahorros" ? "active" : ""}
+            onClick={() => handleMenuItemClick("ahorros")}
           >
-            Paso 2
+            Ahorros
           </li>
             </div>
 
@@ -87,12 +89,23 @@ const ControlFinanzas = () => {
              }
             </div>
 
-          {selectedMenuItem === "paso2" && 
+          {selectedMenuItem === "ahorros" && 
           <div>
-            <DropdownMenu/>
+                {inversiones != null ? (
+                    <>
+                    <div className="mt-[100px] mx-[50px]">
+                    <h1 className="text-white text-[30px]">Gracias por completar el formulario de ahorros</h1>
+                    </div>
+                    </>
+                ): (
+                    <Ahorros/>
+                )
+                }
           </div>
           }
-          {selectedMenuItem === "paso3" && <h1>Paso 3</h1>}
+          {selectedMenuItem === "paso3" && 
+          <DropdownMenu/>
+          }
           {/* {selectedMenuItem != "paso3" && selectedMenuItem != "paso2" && selectedMenuItem != "paso1" &&  <h1>Completa el formulario </h1>} */}
         </div>
       </div>
