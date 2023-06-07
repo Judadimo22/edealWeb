@@ -9,6 +9,7 @@ export const UPDATE_INGRESOS = 'UPDATE_INGRESOS';
 export const REGISTER_USER = 'REGISTER_USER';
 export const CONFIRMAR_CUENTA = 'CONFIRMAR_CUENTA';
 export const SET_USER_ID = 'SET_USER_ID';
+export const UPDATE_GASTOS_HOGAR = 'UPDATE_GASTOS_HOGAR';
 
 export function registerUser(payload) {
   return async function (dispatch) {
@@ -87,6 +88,16 @@ export function updateIngresos (id, payload){
     const json = await axios.put(`http://localhost:3001/ingresos/${id}`, payload);
     return dispatch({
       type: UPDATE_INGRESOS,
+      payload: json.data
+    })
+  }
+}
+
+export function updateGastosHogar (id, payload){
+  return async function (dispatch) {
+    const json = await axios.put(`http://localhost:3001/gastosHogar/${id}`, payload);
+    return dispatch({
+      type: UPDATE_GASTOS_HOGAR,
       payload: json.data
     })
   }

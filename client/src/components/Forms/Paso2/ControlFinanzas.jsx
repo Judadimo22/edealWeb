@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getUserById, setUserId } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import DropdownMenu from "./DropdownMenu";
 import Ingresos from "./Ingresos";
 import Ahorros from "./Ahorros";
+import Gastos from "./Gastos";
 
 const ControlFinanzas = () => {
     const [selectedMenuItem, setSelectedMenuItem] = useState("home");
@@ -58,12 +58,12 @@ const ControlFinanzas = () => {
           </li>
             </div>
 
-          <div className="mx-[30px]  py-[2px] px-[5px] rounded-sm cursor-pointer">
+          <div className="mx-[30px]  py-[2px] px-[5px] rounded-sm cursor-pointer text-white">
           <li
-            className={selectedMenuItem === "paso3" ? "active" : ""}
-            onClick={() => handleMenuItemClick("paso3")}
+            className={selectedMenuItem === "gastos" ? "active" : ""}
+            onClick={() => handleMenuItemClick("gastos")}
           >
-            Paso 3
+            Gastos
           </li>
           </div>
 
@@ -103,8 +103,8 @@ const ControlFinanzas = () => {
                 }
           </div>
           }
-          {selectedMenuItem === "paso3" && 
-          <DropdownMenu/>
+          {selectedMenuItem === "gastos" && 
+          <Gastos/>
           }
           {/* {selectedMenuItem != "paso3" && selectedMenuItem != "paso2" && selectedMenuItem != "paso1" &&  <h1>Completa el formulario </h1>} */}
         </div>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { getUserById, setUserId } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import InfoPersonal from "../Forms/Paso1/InfoPersonal/InfoPersonal";
-import DropdownMenu from "../Forms/Paso2/DropdownMenu";
 import ControlFinanzas from "../Forms/Paso2/ControlFinanzas";
 
 const MenuPlaneacion = () => {

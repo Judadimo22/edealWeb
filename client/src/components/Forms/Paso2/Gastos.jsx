@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import GastosHogar from "./Gastos/Hogar";
 
-const DropdownMenu = () => {
+const Gastos = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleOptionChange = (e) => {
@@ -8,8 +9,8 @@ const DropdownMenu = () => {
   };
 
   const renderForm = () => {
-    if (selectedOption === "form1") {
-      return <Form1 />;
+    if (selectedOption === "gastosHogar") {
+      return <GastosHogar />;
     } else if (selectedOption === "form2") {
       return <Form2 />;
     } else if (selectedOption === "form3") {
@@ -20,10 +21,10 @@ const DropdownMenu = () => {
   };
 
   return (
-    <div>
+    <div className="mt-[20px]">
       <select value={selectedOption} onChange={handleOptionChange}>
-        <option value="">Seleccione una opción</option>
-        <option value="form1">Formulario 1</option>
+        <option value="">Selecciona el formulario que deseas completar</option>
+        <option value="gastosHogar">Gastos del hogar</option>
         <option value="form2">Formulario 2</option>
         <option value="form3">Formulario 3</option>
       </select>
@@ -59,4 +60,4 @@ const Form3 = () => {
   );
 };
 
-export default DropdownMenu;
+export default Gastos;
