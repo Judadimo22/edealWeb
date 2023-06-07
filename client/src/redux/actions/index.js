@@ -10,6 +10,7 @@ export const REGISTER_USER = 'REGISTER_USER';
 export const CONFIRMAR_CUENTA = 'CONFIRMAR_CUENTA';
 export const SET_USER_ID = 'SET_USER_ID';
 export const UPDATE_GASTOS_HOGAR = 'UPDATE_GASTOS_HOGAR';
+export const UPDATE_GASTOS_TRANSPORTE = 'UPDATE_GASTOS_TRANSPORTE';
 
 export function registerUser(payload) {
   return async function (dispatch) {
@@ -102,6 +103,17 @@ export function updateGastosHogar (id, payload){
     })
   }
 }
+
+export function updateGastosTransporte (id, payload){
+  return async function (dispatch) {
+    const json = await axios.put(`http://localhost:3001/gastosTransporte/${id}`, payload);
+    return dispatch({
+      type: UPDATE_GASTOS_TRANSPORTE,
+      payload: json.data
+    })
+  }
+}
+
 
 export function confirmarCuenta(id) {
   return async function (dispatch) {
