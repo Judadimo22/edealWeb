@@ -4,6 +4,7 @@ import GastosTransporte from "./Gastos/Transporte";
 import GastosEntretenimiento from "./Gastos/Entretenimiento";
 import GastosFinancieros from "./Gastos/Financieros";
 import Vacaciones from "./Gastos/Vacaciones";
+import Impuestos from "./Gastos/Impuestos";
 
 const Gastos = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -23,6 +24,8 @@ const Gastos = () => {
       return<GastosFinancieros/>;
     } else if (selectedOption === "gastosVacaciones") {
       return<Vacaciones/>
+    } else if (selectedOption === "gastosImpuestos"){
+      return<Impuestos/>
     } else {
       return null;
     }
@@ -37,6 +40,7 @@ const Gastos = () => {
         <option value="gastosEntretenimiento">Gastos en entretenimiento</option>
         <option value="gastosFinancieros">Gastos financieros</option>
         <option value="gastosVacaciones">Gastos en vacaciones</option>
+        <option value="gastosImpuestos">Gastos en impuestos</option>
       </select>
       {renderForm()}
     </div>
