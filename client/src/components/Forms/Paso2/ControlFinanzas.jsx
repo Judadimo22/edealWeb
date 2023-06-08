@@ -23,9 +23,6 @@ const ControlFinanzas = () => {
         dispatch(getUserById(storedUserId));
       }, [dispatch, storedUserId]);
 
-    const name = getUserId.name
-    const salario = getUserId.salario
-    const inversiones = getUserId.inversiones
 
     const handleMenuItemClick = (menuItem) => {
       setSelectedMenuItem(menuItem);
@@ -35,10 +32,26 @@ const ControlFinanzas = () => {
       setSelectedMenuItem(menuItem);
     };
 
-
-  
+    const planCelular = getUserId.planCelular
+    const cuotaCarro = getUserId.cuotaCarro
+    const cine = getUserId.cine
+    const seguroSalud = getUserId.seguroSalud
+    const hoteles = getUserId.hoteles
+    const predial = getUserId.predial
+    const tipoDeudaGastosCredito = getUserId.tipoDeudaGastosCredito
+    const name = getUserId.name
+    const salario = getUserId.salario
+    const inversiones = getUserId.inversiones
     return (
       <div className="mt-[50px]ustify-center">
+                {planCelular != null && cuotaCarro != null && cine != null && seguroSalud != null && hoteles != null && predial != null && tipoDeudaGastosCredito != null && salario != null && inversiones != null  ? (
+                    <>
+                    <div className="mt-[100px] mx-[50px]">
+                    <h1 className="text-white text-[30px]">Gracias por completar el paso 2</h1>
+                    </div>
+                    </>
+                ): (
+                    <div>
         <ul className="justify-center flex">
             <div className="mx-[30px] py-[2px] px-[5px] rounded-sm cursor-pointer text-white">
             <li
@@ -66,10 +79,6 @@ const ControlFinanzas = () => {
             Gastos
           </li>
           </div>
-
-
-
-
         </ul>
         <div>
             <div>
@@ -106,8 +115,11 @@ const ControlFinanzas = () => {
           {selectedMenuItem === "gastos" && 
           <Gastos/>
           }
-          {/* {selectedMenuItem != "paso3" && selectedMenuItem != "paso2" && selectedMenuItem != "paso1" &&  <h1>Completa el formulario </h1>} */}
         </div>
+                    </div>
+                )
+                }
+
       </div>
     );
   };
