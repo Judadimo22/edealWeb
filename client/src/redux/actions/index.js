@@ -15,6 +15,7 @@ export const UPDATE_GASTOS_ENTRETENIMIENTO = 'UPDATE_GASTOS_ENTRETENIMIENTO';
 export const UPDATE_GASTOS_FINANCIEROS = 'UPDATE_GASTOS_FINANCIEROS';
 export const UPDATE_GASTOS_VACACIONES = 'UPDATE_GASTOS_VACACIONES';
 export const UPDATE_GASTOS_IMPUESTOS = 'UPDATE_GASTOS_IMPUESTOS';
+export const UPDATE_GASTOS_CREDITO = 'UPDATE_GASTOS_CREDITO';
 
 export function registerUser(payload) {
   return async function (dispatch) {
@@ -153,6 +154,16 @@ export function updateGastosImpuestos(id, payload){
     const json = await axios.put(`http://localhost:3001/gastosImpuestos/${id}`, payload);
     return dispatch({
       type: UPDATE_GASTOS_IMPUESTOS,
+      payload: json.data
+    })
+  }
+}
+
+export function updateGastosCredito(id, payload){
+  return async function (dispatch) {
+    const json = await axios.put(`http://localhost:3001/gastosCredito/${id}`, payload);
+    return dispatch({
+      type: UPDATE_GASTOS_CREDITO,
       payload: json.data
     })
   }
