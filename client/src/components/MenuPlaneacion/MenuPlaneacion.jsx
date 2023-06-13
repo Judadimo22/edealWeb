@@ -3,6 +3,7 @@ import { getUserById, setUserId } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import InfoPersonal from "../Forms/Paso1/InfoPersonal/InfoPersonal";
 import ControlFinanzas from "../Forms/Paso2/ControlFinanzas";
+import DefinirObjetivos from "../Forms/Paso 3/DefinirObjetivos";
 
 const MenuPlaneacion = () => {
     const [selectedMenuItem, setSelectedMenuItem] = useState("home");
@@ -107,7 +108,11 @@ const MenuPlaneacion = () => {
             <ControlFinanzas/>
           </div>
           }
-          {selectedMenuItem === "paso3" && <h1>Paso 3</h1>}
+          {selectedMenuItem === "paso3" && 
+          <div>
+            <DefinirObjetivos/>
+          </div>
+          }
           {selectedMenuItem === "paso4" && <h1>Paso 4</h1>}
           {selectedMenuItem === "paso5" && <h1>Paso 5</h1>}
           {selectedMenuItem != "paso5" && selectedMenuItem != "paso4" && selectedMenuItem != "paso3" && selectedMenuItem != "paso2" && selectedMenuItem != "paso1" &&  <h1>Completa el formulario </h1>}
