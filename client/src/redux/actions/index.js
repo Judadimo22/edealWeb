@@ -17,6 +17,7 @@ export const UPDATE_GASTOS_VACACIONES = 'UPDATE_GASTOS_VACACIONES';
 export const UPDATE_GASTOS_IMPUESTOS = 'UPDATE_GASTOS_IMPUESTOS';
 export const UPDATE_GASTOS_CREDITO = 'UPDATE_GASTOS_CREDITO';
 export const UPDATE_METAS_FINANCIERAS = 'UPDATE_METAS_FINANCIERAS';
+export const UPDATE_OBJETIVOS_SALUD = 'UPDATE_OBJETIVOS_SALUD' 
 
 export function registerUser(payload) {
   return async function (dispatch) {
@@ -27,7 +28,6 @@ export function registerUser(payload) {
       const userId = decodedToken._id;
       console.log('IDACTIONS:', userId);
 
-      // Guardar userId en el almacenamiento local
       localStorage.setItem('userId', userId);
 
       dispatch({
@@ -38,7 +38,6 @@ export function registerUser(payload) {
         }
       });
     } catch (error) {
-      // Manejo de errores
     }
   }
 }
@@ -180,6 +179,16 @@ export function updateMetasFinancieras(id, payload){
   }
 }
 
+export function updateObjetivosSalud(id, payload){
+  return async function (dispatch) {
+    const json = await axios.put(`http://localhost:3001/objetivosSalud/${id}`, payload);
+    return dispatch({
+      type: UPDATE_OBJETIVOS_SALUD,
+      payload: json.data
+    })
+  }
+}
+
 
 export function confirmarCuenta(id) {
   return async function (dispatch) {
@@ -191,7 +200,6 @@ export function confirmarCuenta(id) {
       });
     } catch (error) {
       console.error(error);
-      // Aquí puedes manejar el error de alguna manera si lo deseas
     }
   };
 }
@@ -204,19 +212,17 @@ export function login(email, password) {
       const decodedToken = jwtDecode(token);
       const userId = decodedToken._id;
 
-      // Guardar userId en el almacenamiento local
       localStorage.setItem('userId', userId);
 
       dispatch({
         type: SET_USER_ID,
-        payload: { userId, userExists: true }, // Agregar userExists como campo adicional
+        payload: { userId, userExists: true }, 
       });
 
-      return { success: true, token, userExists: true }; // Devolver userExists en la respuesta
+      return { success: true, token, userExists: true }; 
     } catch (error) {
       console.error(error);
-      // Aquí puedes manejar el error de alguna manera si lo deseas
-      return { success: false, error: error.message, userExists: false }; // Devolver userExists en la respuesta
+      return { success: false, error: error.message, userExists: false }; 
     }
   };
 }

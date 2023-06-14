@@ -3,6 +3,7 @@ import { getUserById, setUserId } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Gastos from "../Paso2/Gastos";
 import MetasFinancieras from "./MetasFinancieras";
+import Salud from "./Salud";
 
 
 const DefinirObjetivos = () => {
@@ -54,8 +55,8 @@ const DefinirObjetivos = () => {
 
           <div className="mx-[30px]  py-[2px] px-[5px] rounded-sm cursor-pointer text-white">
             <li
-            className={selectedMenuItem === "ahorros" ? "active" : ""}
-            onClick={() => handleMenuItemClick("ahorros")}
+            className={selectedMenuItem === "salud" ? "active" : ""}
+            onClick={() => handleMenuItemClick("salud")}
           >
             Salud
           </li>
@@ -88,16 +89,16 @@ const DefinirObjetivos = () => {
              }
             </div>
 
-          {selectedMenuItem === "ahorros" && 
+          {selectedMenuItem === "salud" && 
           <div>
-                {inversiones != null ? (
+                { cuentaConPlanSalud != null ? (
                     <>
                     <div className="mt-[100px] mx-[50px]">
-                    <h1 className="text-white text-[30px]">Gracias por completar el formulario de metas financieras</h1>
+                    <h1 className="text-white text-[30px]">Gracias por completar el formulario de salud</h1>
                     </div>
                     </>
                 ): (
-                    <MetasFinancieras/>
+                    <Salud/>
                 )
                 }
           </div>
