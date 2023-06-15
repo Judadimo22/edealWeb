@@ -18,7 +18,8 @@ export const UPDATE_GASTOS_IMPUESTOS = 'UPDATE_GASTOS_IMPUESTOS';
 export const UPDATE_GASTOS_CREDITO = 'UPDATE_GASTOS_CREDITO';
 export const UPDATE_METAS_FINANCIERAS = 'UPDATE_METAS_FINANCIERAS';
 export const UPDATE_OBJETIVOS_SALUD = 'UPDATE_OBJETIVOS_SALUD';
-export const UPDATE_OBJETIVOS_EDUCACION = 'UPDATE_OBJETIVOS_EDUCACION'
+export const UPDATE_OBJETIVOS_EDUCACION = 'UPDATE_OBJETIVOS_EDUCACION';
+export const UPDATE_OBJETIVOS_RETIRO = 'UPDATE_OBJETIVOS_RETIRO';
 
 export function registerUser(payload) {
   return async function (dispatch) {
@@ -195,6 +196,16 @@ export function updateObjetivosEducacion(id, payload){
     const json = await axios.put(`http://localhost:3001/objetivosEducacion/${id}`, payload);
     return dispatch({
       type: UPDATE_OBJETIVOS_EDUCACION,
+      payload: json.data
+    })
+  }
+}
+
+export function updateObjetivosRetiro(id, payload){
+  return async function (dispatch) {
+    const json = await axios.put(`http://localhost:3001/objetivosRetiro/${id}`, payload);
+    return dispatch({
+      type: UPDATE_OBJETIVOS_RETIRO,
       payload: json.data
     })
   }

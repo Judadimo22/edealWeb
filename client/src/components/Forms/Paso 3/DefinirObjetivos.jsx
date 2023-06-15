@@ -5,6 +5,7 @@ import Gastos from "../Paso2/Gastos";
 import MetasFinancieras from "./MetasFinancieras";
 import Salud from "./Salud";
 import Educacion from "./Educacion";
+import ObjetivosRetiro from "./ObjetivosRetiro";
 
 
 const DefinirObjetivos = () => {
@@ -34,9 +35,10 @@ const DefinirObjetivos = () => {
     const plazoVacaciones = getUserId.plazoVacaciones
     const cuentaConPlanSalud = getUserId.cuentaConPlanSalud
     const nombreEstudiante1 = getUserId.nombreEstudiante1
+    const valorViviendaRetiro = getUserId.valorViviendaRetiro
     return (
       <div className="mt-[50px]ustify-center">
-                {plazoVacaciones != null && cuentaConPlanSalud != null && nombreEstudiante1 != null  ? (
+                {plazoVacaciones != null && cuentaConPlanSalud != null && nombreEstudiante1 != null && valorViviendaRetiro!= null  ? (
                     <>
                     <div className="mt-[100px] mx-[50px]">
                     <h1 className="text-white text-[30px]">Gracias por completar el paso 3</h1>
@@ -69,6 +71,14 @@ const DefinirObjetivos = () => {
             onClick={() => handleMenuItemClick("educacion")}
           >
             Educacion
+          </li>
+          </div>
+          <div className="mx-[30px]  py-[2px] px-[5px] rounded-sm cursor-pointer text-white">
+          <li
+            className={selectedMenuItem === "gastosRetiro" ? "active" : ""}
+            onClick={() => handleMenuItemClick("gastosRetiro")}
+          >
+            Gastos para mi retiro
           </li>
           </div>
         </ul>
@@ -114,6 +124,20 @@ const DefinirObjetivos = () => {
                     </>
                 ): (
                     <Educacion/>
+                )
+                }
+          </div>
+          }
+          {selectedMenuItem === "gastosRetiro" && 
+          <div>
+                { valorViviendaRetiro != null ? (
+                    <>
+                    <div className="mt-[100px] mx-[50px]">
+                    <h1 className="text-white text-[30px]">Gracias por completar el formulario de gastos para mi retiro</h1>
+                    </div>
+                    </>
+                ): (
+                    <ObjetivosRetiro/>
                 )
                 }
           </div>
