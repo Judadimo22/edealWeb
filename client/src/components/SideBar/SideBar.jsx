@@ -37,7 +37,9 @@ const SideBar = () => {
                 </Link>
             </div>
             <div className="my-[10px] text-white">
+                <Link to='/credito'>
                 Credito
+                </Link>
             </div>
             <div className="my-[10px] text-white">
                 Ahorro

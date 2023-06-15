@@ -51,7 +51,7 @@ const Confirmar = () => {
         confirmButtonColor: "#3085d6",
         confirmButtonText: "Continuar"
       }).then(() => {
-        dispatch(confirmarCuenta(userId2)).then(() => {
+        dispatch(confirmarCuenta(storedUserId)).then(() => {
           navigate(`/dashboard`);
         }).catch(() => {
           Swal.fire({
@@ -78,25 +78,26 @@ const Confirmar = () => {
   const { name, code, email } = getUserId;
 
   return (
-    <div className="bg-white">
-      <h1>Confirma tu cuenta</h1>
-      <h3>
-        Se ha enviado un código de confirmación a tu correo {email}. Por favor,
+    <div className="bg-white my-[100px] py-[100px]">
+      <h1 className="text-[20px] mb-[20px]"><strong>Confirma tu cuenta</strong></h1>
+      <h3 className="mx-[300px] my-[20px]">
+        Se ha enviado un código de confirmación a tu correo <strong>{email}</strong>. Por favor,
         digita el código para confirmar tu cuenta.
       </h3>
-      <p>{secondsRemaining} segundos restantes</p>
-      <h1>{code}</h1>
+      <p>El código expira en <strong>{secondsRemaining} segundos</strong></p>
       <form onSubmit={handleSubmit}>
         <input
+        className="my-[20px] border border-gray-500 rounded px-[5px]"
           value={inputCode}
           onChange={(e) => setInputCode(e.target.value)}
           type="text"
+          placeholder="Codigo de confirmacion"
         />
-        <div>
+        <div className="bg-[#E8E112] mx-[400px]">
           <button type="submit">Confirmar cuenta</button>
         </div>
       </form>
-      {secondsRemaining === 0 && <button>Botón</button>}
+      {/* {secondsRemaining === 0 && <button>Botón</button>} */}
     </div>
   );
 };
