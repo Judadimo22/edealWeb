@@ -42,7 +42,9 @@ const SideBar = () => {
                 </Link>
             </div>
             <div className="my-[10px] text-white">
+                <Link to='/ahorro'>
                 Ahorro
+                </Link>
             </div>
             </div>
         </div>

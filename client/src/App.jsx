@@ -8,6 +8,7 @@ import Confirmar from './components/Confirmar/Confirmar';
 import DashBoard from './pages/DashBoard/DashBoard';
 import PlaneacionPage from './pages/PlaneacionPage/PlaneacionPage';
 import CreditoPage from './pages/CreditoPage/CreditoPage';
+import AhorroPage from './pages/AhorroPage/AhorroPage';
 
 
 
@@ -22,6 +23,7 @@ function App() {
       <Route exact path= '/dashboard' element={<DashBoard/>}/>
       <Route exact path= '/planeacionFinanciera' element={<PlaneacionPage/>}/>
       <Route exact path= '/credito' element={<CreditoPage/>}/>
+      <Route exact path= '/ahorro' element={<AhorroPage/>}/>
     </Routes>
   );
 }

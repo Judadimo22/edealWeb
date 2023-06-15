@@ -22,7 +22,8 @@ export const UPDATE_OBJETIVOS_EDUCACION = 'UPDATE_OBJETIVOS_EDUCACION';
 export const UPDATE_OBJETIVOS_RETIRO = 'UPDATE_OBJETIVOS_RETIRO';
 export const UPDATE_PERFIL_RIESGO = 'UPDATE_PERFIL_RIESGO';
 export const UPDATE_FUENTES_ADICIONALES = 'UPDATE_FUENTES_ADICIONALES';
-export const UPDATE_CREDIT= 'UPDATE_CREDITO'
+export const UPDATE_CREDIT= 'UPDATE_CREDITO';
+export const UPDATE_AHORRO = 'UPDATE_AHORRO'
 
 export function registerUser(payload) {
   return async function (dispatch) {
@@ -240,6 +241,16 @@ export function updateCredito(id, payload){
     const json = await axios.put(`http://localhost:3001/credit/${id}`, payload);
     return dispatch({
       type: UPDATE_CREDITO,
+      payload: json.data
+    })
+  }
+}
+
+export function updateAhorro(id, payload){
+  return async function (dispatch) {
+    const json = await axios.put(`http://localhost:3001/ahorro/${id}`, payload);
+    return dispatch({
+      type: UPDATE_AHORRO,
       payload: json.data
     })
   }
