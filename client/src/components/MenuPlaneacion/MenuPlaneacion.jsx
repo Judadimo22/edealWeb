@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import InfoPersonal from "../Forms/Paso1/InfoPersonal/InfoPersonal";
 import ControlFinanzas from "../Forms/Paso2/ControlFinanzas";
 import DefinirObjetivos from "../Forms/Paso 3/DefinirObjetivos";
+import PerfilRiesgo from "../Forms/paso4/PerfilRiesgo";
+import FuentesAdicionalesIngresos from "../Forms/Paso5/FuentesAdicionalesIngresos";
 
 const MenuPlaneacion = () => {
     const [selectedMenuItem, setSelectedMenuItem] = useState("home");
@@ -25,6 +27,8 @@ const MenuPlaneacion = () => {
 
     const name = getUserId.name
     const estadoCivilCliente1 = getUserId.estadoCivilCliente1
+    const experienciaInversiones = getUserId.experienciaInversiones
+    const trabajarMas = getUserId.trabajarMas
 
     const handleMenuItemClick = (menuItem) => {
       setSelectedMenuItem(menuItem);
@@ -113,8 +117,38 @@ const MenuPlaneacion = () => {
             <DefinirObjetivos/>
           </div>
           }
-          {selectedMenuItem === "paso4" && <h1>Paso 4</h1>}
-          {selectedMenuItem === "paso5" && <h1>Paso 5</h1>}
+            <div>
+            {selectedMenuItem === "paso4" &&
+            <div>
+                {experienciaInversiones != null ? (
+                    <>
+                    <div className="mt-[100px] mx-[50px]">
+                    <h1 className="text-white text-[30px]">Gracias por completar el paso 4</h1>
+                    </div>
+                    </>
+                ): (
+                    <PerfilRiesgo/>
+                )
+                }
+            </div>
+             }
+            </div>
+            <div>
+            {selectedMenuItem === "paso5" &&
+            <div>
+                {trabajarMas != null ? (
+                    <>
+                    <div className="mt-[100px] mx-[50px]">
+                    <h1 className="text-white text-[30px]">Gracias por completar el paso 5</h1>
+                    </div>
+                    </>
+                ): (
+                    <FuentesAdicionalesIngresos/>
+                )
+                }
+            </div>
+             }
+            </div>
           {selectedMenuItem != "paso5" && selectedMenuItem != "paso4" && selectedMenuItem != "paso3" && selectedMenuItem != "paso2" && selectedMenuItem != "paso1" &&  <h1>Completa el formulario </h1>}
         </div>
       </div>

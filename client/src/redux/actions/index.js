@@ -20,6 +20,7 @@ export const UPDATE_METAS_FINANCIERAS = 'UPDATE_METAS_FINANCIERAS';
 export const UPDATE_OBJETIVOS_SALUD = 'UPDATE_OBJETIVOS_SALUD';
 export const UPDATE_OBJETIVOS_EDUCACION = 'UPDATE_OBJETIVOS_EDUCACION';
 export const UPDATE_OBJETIVOS_RETIRO = 'UPDATE_OBJETIVOS_RETIRO';
+export const UPDATE_PERFIL_RIESGO = 'UPDATE_PERFIL_RIESGO';
 
 export function registerUser(payload) {
   return async function (dispatch) {
@@ -206,6 +207,16 @@ export function updateObjetivosRetiro(id, payload){
     const json = await axios.put(`http://localhost:3001/objetivosRetiro/${id}`, payload);
     return dispatch({
       type: UPDATE_OBJETIVOS_RETIRO,
+      payload: json.data
+    })
+  }
+}
+
+export function updatePerfilRiesgo(id, payload){
+  return async function (dispatch) {
+    const json = await axios.put(`http://localhost:3001/perfilRiesgo/${id}`, payload);
+    return dispatch({
+      type: UPDATE_PERFIL_RIESGO,
       payload: json.data
     })
   }
