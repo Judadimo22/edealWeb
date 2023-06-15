@@ -28,7 +28,7 @@ export const UPDATE_AHORRO = 'UPDATE_AHORRO'
 export function registerUser(payload) {
   return async function (dispatch) {
     try {
-      let response = await axios.post('http://localhost:3001/register', payload);
+      let response = await axios.post('https://edeal-app.onrender.com/register', payload);
       const token = response.data.token;
       const decodedToken = jwtDecode(token);
       const userId = decodedToken._id;
@@ -57,7 +57,7 @@ export function setUserId(userId) {
 
 export function getUsers() {
   return async function (dispatch) {
-    let json = await axios.get('http://localhost:3001/users');
+    let json = await axios.get('https://edeal-app.onrender.com/users');
     dispatch({
       type: GET_USERS,
       payload: json.data,
@@ -67,7 +67,7 @@ export function getUsers() {
 
 export function getUserById(id) {
   return async function (dispatch) {
-    let json = await axios.get(`http://localhost:3001/user/${id}`);
+    let json = await axios.get(`https://edeal-app.onrender.com/user/${id}`);
     dispatch({
       type: GET_BY_ID,
       payload: json.data,
@@ -77,7 +77,7 @@ export function getUserById(id) {
 
 export function updateInfoPersonal (id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/infoPersonal/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/infoPersonal/${id}`, payload);
     return dispatch({
       type: UPDATE_INFO_PERSONAL,
       payload: json.data
@@ -87,7 +87,7 @@ export function updateInfoPersonal (id, payload){
 
 export function updateAhorros (id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/ahorros/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/ahorros/${id}`, payload);
     return dispatch({
       type: UPDATE_AHORROS,
       payload: json.data
@@ -97,7 +97,7 @@ export function updateAhorros (id, payload){
 
 export function updateIngresos (id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/ingresos/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/ingresos/${id}`, payload);
     return dispatch({
       type: UPDATE_INGRESOS,
       payload: json.data
@@ -107,7 +107,7 @@ export function updateIngresos (id, payload){
 
 export function updateGastosHogar (id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/gastosHogar/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/gastosHogar/${id}`, payload);
     return dispatch({
       type: UPDATE_GASTOS_HOGAR,
       payload: json.data
@@ -117,7 +117,7 @@ export function updateGastosHogar (id, payload){
 
 export function updateGastosTransporte (id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/gastosTransporte/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/gastosTransporte/${id}`, payload);
     return dispatch({
       type: UPDATE_GASTOS_TRANSPORTE,
       payload: json.data
@@ -127,7 +127,7 @@ export function updateGastosTransporte (id, payload){
 
 export function updateGastosEntretenimiento (id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/gastosEntretenimiento/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/gastosEntretenimiento/${id}`, payload);
     return dispatch({
       type: UPDATE_GASTOS_ENTRETENIMIENTO,
       payload: json.data
@@ -137,7 +137,7 @@ export function updateGastosEntretenimiento (id, payload){
 
 export function updateGastosFinancieros (id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/gastosFinancieros/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/gastosFinancieros/${id}`, payload);
     return dispatch({
       type: UPDATE_GASTOS_FINANCIEROS,
       payload: json.data
@@ -147,7 +147,7 @@ export function updateGastosFinancieros (id, payload){
 
 export function updateGastosVacaciones(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/gastosVacaciones/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/gastosVacaciones/${id}`, payload);
     return dispatch({
       type: UPDATE_GASTOS_VACACIONES,
       payload: json.data
@@ -157,7 +157,7 @@ export function updateGastosVacaciones(id, payload){
 
 export function updateGastosImpuestos(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/gastosImpuestos/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/gastosImpuestos/${id}`, payload);
     return dispatch({
       type: UPDATE_GASTOS_IMPUESTOS,
       payload: json.data
@@ -167,7 +167,7 @@ export function updateGastosImpuestos(id, payload){
 
 export function updateGastosCredito(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/gastosCredito/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/gastosCredito/${id}`, payload);
     return dispatch({
       type: UPDATE_GASTOS_CREDITO,
       payload: json.data
@@ -177,7 +177,7 @@ export function updateGastosCredito(id, payload){
 
 export function updateMetasFinancieras(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/metasFinancieras/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/metasFinancieras/${id}`, payload);
     return dispatch({
       type: UPDATE_METAS_FINANCIERAS,
       payload: json.data
@@ -187,7 +187,7 @@ export function updateMetasFinancieras(id, payload){
 
 export function updateObjetivosSalud(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/objetivosSalud/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/objetivosSalud/${id}`, payload);
     return dispatch({
       type: UPDATE_OBJETIVOS_SALUD,
       payload: json.data
@@ -197,7 +197,7 @@ export function updateObjetivosSalud(id, payload){
 
 export function updateObjetivosEducacion(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/objetivosEducacion/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/objetivosEducacion/${id}`, payload);
     return dispatch({
       type: UPDATE_OBJETIVOS_EDUCACION,
       payload: json.data
@@ -207,7 +207,7 @@ export function updateObjetivosEducacion(id, payload){
 
 export function updateObjetivosRetiro(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/objetivosRetiro/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/objetivosRetiro/${id}`, payload);
     return dispatch({
       type: UPDATE_OBJETIVOS_RETIRO,
       payload: json.data
@@ -217,7 +217,7 @@ export function updateObjetivosRetiro(id, payload){
 
 export function updatePerfilRiesgo(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/perfilRiesgo/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/perfilRiesgo/${id}`, payload);
     return dispatch({
       type: UPDATE_PERFIL_RIESGO,
       payload: json.data
@@ -227,7 +227,7 @@ export function updatePerfilRiesgo(id, payload){
 
 export function updateFuentesAdicionales(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/fuentesAdicionales/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/fuentesAdicionales/${id}`, payload);
     return dispatch({
       type: UPDATE_FUENTES_ADICIONALES,
       payload: json.data
@@ -238,7 +238,7 @@ export function updateFuentesAdicionales(id, payload){
 
 export function updateCredito(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/credit/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/credit/${id}`, payload);
     return dispatch({
       type: UPDATE_CREDITO,
       payload: json.data
@@ -248,7 +248,7 @@ export function updateCredito(id, payload){
 
 export function updateAhorro(id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/ahorro/${id}`, payload);
+    const json = await axios.put(`https://edeal-app.onrender.com/ahorro/${id}`, payload);
     return dispatch({
       type: UPDATE_AHORRO,
       payload: json.data
@@ -259,7 +259,7 @@ export function updateAhorro(id, payload){
 export function confirmarCuenta(id) {
   return async function (dispatch) {
     try {
-      const json = await axios.put(`http://localhost:3001/confirmar/${id}`);
+      const json = await axios.put(`https://edeal-app.onrender.com/confirmar/${id}`);
       return dispatch({
         type: CONFIRMAR_CUENTA,
         payload: json.data
@@ -273,7 +273,7 @@ export function confirmarCuenta(id) {
 export function login(email, password) {
   return async function (dispatch) {
     try {
-      const response = await axios.post('http://localhost:3001/login', { email, password });
+      const response = await axios.post('https://edeal-app.onrender.com/login', { email, password });
       const token = response.data.token;
       const decodedToken = jwtDecode(token);
       const userId = decodedToken._id;
