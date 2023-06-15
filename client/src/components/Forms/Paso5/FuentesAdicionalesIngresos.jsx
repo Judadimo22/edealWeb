@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { getUserById,setUserId,updatePerfilRiesgo } from "../../../redux/actions/index";
+import { getUserById,setUserId,updateFuentesAdicionales } from "../../../redux/actions/index";
 import Swal from "sweetalert2";
 
 const FuentesAdicionalesIngresos = () => {
@@ -10,16 +10,16 @@ const FuentesAdicionalesIngresos = () => {
   const [storedUserId, setStoredUserId] = useState(null);
   const getUserId = useSelector((state) => state.Details);
   const [inputInfo, setInputInfo] = useState({
-    experienciaInversiones: "",
-    poseoAlgunActivo: "",
-    generarIngresos: "",
-    arriesgarMiCapital: "",
-    incrementarPatrimonio: "",
-    protegerPatrimonio: "",
-    perfilActitudInversionista: "",
-    prioridadesFinancieras: "",
-    iniciarRetiros: "",
-    continuarRetiros: ""
+    trabajarMas: "",
+    ahorrarMas: "",
+    gastarMenos: "",
+    habilidadGenerarIngresos: "",
+    desarrollarHabilidades: "",
+    viviendaPropia: "",
+    productosGustariaTener: "",
+    analisisAsegurabilidad: "",
+    migracion: "",
+    planHerencia: ""
   });
 
   useEffect(() => {
@@ -40,16 +40,16 @@ const FuentesAdicionalesIngresos = () => {
 
   useEffect(() => {
     setInputInfo({
-        experienciaInversiones: getUserId.experienciaInversiones,
-        poseoAlgunActivo: getUserId.poseoAlgunActivo,
-        generarIngresos: getUserId.generarIngresos,
-        arriesgarMiCapital: getUserId.arriesgarMiCapital,
-        incrementarPatrimonio: getUserId.incrementarPatrimonio,
-        protegerPatrimonio: getUserId.protegerPatrimonio,
-        perfilActitudInversionista: getUserId.perfilActitudInversionista,
-        prioridadesFinancieras: getUserId.prioridadesFinancieras,
-        iniciarRetiros: getUserId.iniciarRetiros,
-        continuarRetiros: getUserId.continuarRetiros
+      trabajarMas: getUserId.trabajarMas,
+      ahorrarMas: getUserId.ahorrarMas,
+      gastarMenos: getUserId.gastarMenos,
+      habilidadGenerarIngresos: getUserId.habilidadGenerarIngresos,
+      desarrollarHabilidades: getUserId.desarrollarHabilidades,
+      viviendaPropia: getUserId.viviendaPropia,
+      productosGustariaTener: getUserId.productosGustariaTener,
+      analisisAsegurabilidad: getUserId.analisisAsegurabilidad,
+      migracion: getUserId.migracion,
+      planHerencia: getUserId.planHerencia
     });
   }, [getUserId]);
 
@@ -65,16 +65,16 @@ const FuentesAdicionalesIngresos = () => {
     e.preventDefault();
   
     if (
-      !inputInfo.experienciaInversiones ||
-      !inputInfo.poseoAlgunActivo ||
-      !inputInfo.generarIngresos ||
-      !inputInfo.arriesgarMiCapital||
-      !inputInfo.incrementarPatrimonio ||
-      !inputInfo.protegerPatrimonio ||
-      !inputInfo.perfilActitudInversionista ||
-      !inputInfo.prioridadesFinancieras ||
-      !inputInfo.iniciarRetiros ||
-      !inputInfo.continuarRetiros
+      !inputInfo.trabajarMas ||
+      !inputInfo.ahorrarMas ||
+      !inputInfo.gastarMenos ||
+      !inputInfo.habilidadGenerarIngresos||
+      !inputInfo.desarrollarHabilidades ||
+      !inputInfo.viviendaPropia ||
+      !inputInfo.productosGustariaTener ||
+      !inputInfo.analisisAsegurabilidad ||
+      !inputInfo.migracion ||
+      !inputInfo.planHerencia
     ) {
       Swal.fire({
         icon: "error",
@@ -93,74 +93,51 @@ const FuentesAdicionalesIngresos = () => {
         confirmButtonText: "Continuar"
       });
   
-      await dispatch(updatePerfilRiesgo(storedUserId, inputInfo));
+      await dispatch(updateFuentesAdicionales(storedUserId, inputInfo));
   
       setInputInfo({
-        experienciaInversiones: "",
-        poseoAlgunActivo: "",
-        generarIngresos: "",
-        arriesgarMiCapital: "",
-        incrementarPatrimonio: "",
-        protegerPatrimonio: "",
-        perfilActitudInversionista: "",
-        prioridadesFinancieras: "",
-        iniciarRetiros: "",
-        continuarRetiros: ""
+        trabajarMas: "",
+        ahorrarMas: "",
+        gastarMenos: "",
+        habilidadGenerarIngresos: "",
+        desarrollarHabilidades: "",
+        viviendaPropia: "",
+        productosGustariaTener: "",
+        analisisAsegurabilidad: "",
+        migracion: "",
+        planHerencia: ""
       });
   
       window.location.reload();
     }
   }
 
-  const nivelExperiencia = ['Alta', 'Media', 'Baja'];
-  const tipoInstitucionEducativa = ['Alta', 'Media', 'Baja'];
-  const ubicacion = ['Dentro de mi ciudad', 'Fuera de mi ciudad', 'Fuera de mi país']
-  const activos = ['CDT', 'Bonos', 'Acciones', 'Inmuebles']
-  const importancia = ['1', '2', '3', '4']
-  const perfil = ['Especulacion', 'Conservador', 'Moderado', 'Agresivo']
-  const prioridades = ['Como aumentar mi patrimonio', 'Como crear un Plan de ahorro para mi retiro', 'Generar Ingresos en USD', 'Como cubrir las necesidades de mi familia con un seguro de vida', 'Como invertir en bienes raices en USD', 'Filantropia']
-  const plazo = ['Corto plazo (menos de 2 años)', 'Mediano plazo (2-5 años)', 'Mediano plazo (6-10 años)', 'Largo plazo (11-20 años)', 'Más de 20 años']
+  const importancia = ['1', '2', '3']
+  const opciones = ['Si', 'No']
+  const productos = ['Cuenta en USD', 'Plan de ahorro en USD', 'Tarjeta de credito en USD' ]
+  const analisis = ['Seguro de vida', 'Seguro medico', 'Long Term Care Analysis']
+  const migracionPais = ['Estados Unidos', 'Panama', 'Europa', 'Canada']
+  const planDeHerencia = ['Formas de heredar mi patrimonio', 'Estrategia para heredar patrimonio']
+
 
   return (
     <div className="mt-[30px]">
         <form onSubmit={handleSubmitInfo}>
         <div className="text-center mb-[20px]">
-          <h1 className="text-[30px] text-white">Perfil de riesgo</h1>
+          <h1 className="text-[30px] text-white">Fuentes adicionales de ingreso</h1>
         </div>
         <div>
           <h3 className="text-white mb-[20px] mx-[300px] text-left">
-          Las siguientes preguntas nos guiaran a entender y definir mejor cual es su perfil de tolerancia al riesgo 
+          Si sus activos actuales y sus fuentes de ingresos no alcanzan sus objetivos, exploremos algunas formas en las que podría compensar la diferencia.
           </h3>
         </div>
         <div className="px-[300px]">
-        <div className="text-left my-[20px]">
-            <label className="text-white" htmlFor="">Cual es su nivel de experiencia</label>
-            <select className="w-full py-[2px]" name="experienciaInversiones" key='experienciaInversiones' onChange={(e) =>handleInputChange(e)} id="">
-              <option value="">Nivel de experiencia</option>
-              {
-                nivelExperiencia.map(nivel => (
-                  <option value={nivel} key={nivel}>{nivel}</option>
-                  ))                          
-              }
-            </select>
-          </div>
-          <div className="text-left my-[20px]">
-            <label className="text-white" htmlFor="">He invertido o actualmente poseo alguno de los siguientes activos</label>
-            <select className="w-full py-[2px]" name="poseoAlgunActivo" key='poseoAlgunActivo' onChange={(e) =>handleInputChange(e)} id="">
-              <option value="">He invertido o actualmente poseo alguno de los siguientes activos</option>
-              {
-                activos.map(a => (
-                  <option value={a} key={a}>{a}</option>
-                  ))                          
-              }
-            </select>
-            <div className="mt-[30px] text-white">
-              <h6>Pregunta 1: Enumere de 1 al 4 las siguientes objetivos de inversión desde el mas importante (1) al menos improtante (4) para usted</h6>
+        <div className="mt-[30px] text-white text-left">
+              <h6>Por favor enumere (1 al 3)  cual de las siguientes opciones  para aumentar ingresos.  1 la opcion mas viable al 3 la menos viable</h6>
             </div>
-          </div>
           <div className="text-left my-[10px] flex justify-around">
-            <label className="text-white w-[50%]" htmlFor="">Arriesgar mi capital</label>
-            <select className="w-[50%] py-[2px]" name="arriesgarMiCapital" key='arriesgarMiCapital' onChange={(e) =>handleInputChange(e)} id="">
+            <label className="text-white w-[50%]" htmlFor="">Trabajar más</label>
+            <select className="w-[50%] py-[2px]" name="trabajarMas" key='trabajarMas' onChange={(e) =>handleInputChange(e)} id="">
               <option value="">Importancia</option>
               {
                 importancia.map(i => (
@@ -170,19 +147,8 @@ const FuentesAdicionalesIngresos = () => {
             </select>
           </div>
           <div className="text-left my-[10px] flex justify-around">
-            <label className="text-white w-[50%]" htmlFor="">Generar ingresos</label>
-            <select className="w-[50%] py-[2px]" name="generarIngresos" key='generarIngresos' onChange={(e) =>handleInputChange(e)} id="">
-              <option value="">Importancia</option>
-              {
-                importancia.map(i => (
-                  <option value={i} key={i}>{i}</option>
-                  ))                          
-              }
-            </select>
-          </div>
-          <div className="text-left my-[10px] flex justify-around">
-            <label className="text-white w-[50%]" htmlFor="">Incrementar mi patrimonio</label>
-            <select className="w-[50%] py-[2px]" name="incrementarPatrimonio" key='incrementarPatrimonio' onChange={(e) =>handleInputChange(e)} id="">
+            <label className="text-white w-[50%]" htmlFor="">Gastar menos</label>
+            <select className="w-[50%] py-[2px]" name="gastarMenos" key='gastarMenos' onChange={(e) =>handleInputChange(e)} id="">
               <option value="">Importancia</option>
               {
                 importancia.map(i => (
@@ -202,60 +168,94 @@ const FuentesAdicionalesIngresos = () => {
               }
             </select>
           </div>
-          <div className="mt-[50px] text-white text-left">
-              <h6>Pregunta 2. Seleccione cual perfil considera usted que describe si actitud como inversionista</h6>
-            </div>
-          <div className="text-left my-[10px]">
-          <select className="w-full py-[2px]" name="perfilActitudInversionista" key='perfilActitudInversionista' onChange={(e) =>handleInputChange(e)} id="">
-              <option value="">Perfil inversionista</option>
+        <div className="text-left my-[30px]">
+            <label className="text-white" htmlFor="">Creo que tengo una habilidad especial que pudiera permitirme generar ingresos</label>
+            <select className="w-full py-[2px]" name="habilidadGenerarIngresos" key='habilidadGenerarIngresos' onChange={(e) =>handleInputChange(e)} id="">
+              <option value="">Habilidad especial generar ingresos</option>
               {
-                perfil.map(p => (
-                  <option value={p} key={p}>{p}</option>
+                opciones.map(o => (
+                  <option value={o} key={o}>{o}</option>
                   ))                          
               }
             </select>
           </div>
-          <div className="mt-[50px] text-white text-left">
-              <h6>Pregunta 3. Selecciones cuales son las prioridades financieras que desearia revisar con este analisis</h6>
-            </div>
-          <div className="text-left my-[10px]">
-          <select className="w-full py-[2px]" name="prioridadesFinancieras" key='prioridadesFinancieras' onChange={(e) =>handleInputChange(e)} id="">
-              <option value="">Prioridades financieras</option>
+          <div className="text-left my-[20px]">
+            <label className="text-white" htmlFor="">Quisiera desarrollar nuevas habilidades que me permitieran para generar ingresos </label>
+            <select className="w-full py-[2px]" name="desarrollarHabilidades" key='desarrollarHabilidades' onChange={(e) =>handleInputChange(e)} id="">
+              <option value="">Desarrollar nuevas habilidades</option>
               {
-                prioridades.map(p => (
+                opciones.map(o => (
+                  <option value={o} key={o}>{o}</option>
+                  ))                          
+              }
+            </select>
+
+          </div>
+          <div className="text-left my-[20px]">
+            <label className="text-white" htmlFor="">Posee vivienda propia </label>
+            <select className="w-full py-[2px]" name="viviendaPropia" key='viviendaPropia' onChange={(e) =>handleInputChange(e)} id="">
+              <option value="">Posee vivienda propia</option>
+              {
+                opciones.map(o => (
+                  <option value={o} key={o}>{o}</option>
+                  ))                          
+              }
+            </select>
+
+          </div>
+          <div className="text-left my-[20px]">
+            <label className="text-white" htmlFor="">Productos financieros que me gustaría tener </label>
+            <select className="w-full py-[2px]" name="productosGustariaTener" key='productosGustariaTener' onChange={(e) =>handleInputChange(e)} id="">
+              <option value="">Productos financieros</option>
+              {
+                productos.map(producto => (
+                  <option value={producto} key={producto}>{producto}</option>
+                  ))                          
+              }
+            </select>
+
+          </div>
+          <div className="text-left my-[20px]">
+            <label className="text-white" htmlFor="">Análisis de asegurabilidad </label>
+            <select className="w-full py-[2px]" name="analisisAsegurabilidad" key='analisisAsegurabilidad' onChange={(e) =>handleInputChange(e)} id="">
+              <option value="">Analisis asegurabilidad</option>
+              {
+                analisis.map(a => (
+                  <option value={a} key={a}>{a}</option>
+                  ))                          
+              }
+            </select>
+
+          </div>
+          <div className="text-left my-[20px]">
+            <label className="text-white" htmlFor="">Migración (estoy pensando migrar) </label>
+            <select className="w-full py-[2px]" name="migracion" key='migracion' onChange={(e) =>handleInputChange(e)} id="">
+              <option value="">Migracion</option>
+              {
+                migracionPais.map(m => (
+                  <option value={m} key={m}>{m}</option>
+                  ))                          
+              }
+            </select>
+
+          </div>
+          <div className="text-left my-[20px]">
+            <label className="text-white" htmlFor="">Plan de herencia </label>
+            <select className="w-full py-[2px]" name="planHerencia" key='planHerencia' onChange={(e) =>handleInputChange(e)} id="">
+              <option value="">Plan de herencia</option>
+              {
+                planDeHerencia.map(p => (
                   <option value={p} key={p}>{p}</option>
                   ))                          
               }
             </select>
+
           </div>
-          <div className="mt-[50px] text-white text-left">
-              <h6>Pregunta 4. En aproximadamente cuantos años espera que iniciara retiros para sus principal necesidad financiera a cubrir</h6>
-            </div>
-          <div className="text-left my-[10px]">
-          <select className="w-full py-[2px]" name="iniciarRetiros" key='iniciarRetiros' onChange={(e) =>handleInputChange(e)} id="">
-              <option value="">Plazo iniciar retiros</option>
-              {
-                plazo.map(p => (
-                  <option value={p} key={p}>{p}</option>
-                  ))                          
-              }
-            </select>
-          </div>
-          <div className="mt-[50px] text-white text-left">
-              <h6>Preguntas 5. Una vez que comience a retirar fondos para su necesidad financiera principal, ¿durante cuánto tiempo planea que continuarán los retiros?</h6>
-            </div>
-          <div className="text-left my-[10px]">
-          <select className="w-full py-[2px]" name="continuarRetiros" key='continuarRetiros' onChange={(e) =>handleInputChange(e)} id="">
-              <option value="">Tiempo para continuar con retiros</option>
-              {
-                plazo.map(p => (
-                  <option value={p} key={p}>{p}</option>
-                  ))                          
-              }
-            </select>
-          </div>
+
+
+
           <div className="text-center justify-center rounded my-[20px] bg-[#E8E112] py-[2px] text-white">
-            <button type="submit">Actualizar perfil de riesgo</button>
+            <button type="submit">Actualizar fuentes adicionales de ingresos</button>
           </div>
         </div>
       </form>
